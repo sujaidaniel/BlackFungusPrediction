@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+payment
+{% endblock title %}
+
+{% block body %}
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+  <form action="/payment" method="post">
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 jumbotron">
+                <h4 class="text-center bg-success text-white">Make payment</h4>
+
+
+
+                <div class="mb-3">
+                    <label for="text" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="text" name="cname" Required>
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" Required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="text" class="form-label">Card Type</label>
+                    <input type="text" class="form-control" id="text" name="ctype" Required>
+                </div>
+
+               
+
+                <div class="mb-3">
+                    <label for="text" class="form-label">Amount</label>
+                    <input type="text" class="form-control" id="text" name="camt" Required>
+                </div>
+              
+                <button type="submit" class="btn btn-success btn-sm btn-block">Pay bill</button>
+
+                </form>
+
+{% endblock body %}

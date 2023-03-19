@@ -1,0 +1,77 @@
+{% extends 'base.html' %} {% block title %} Signup {% endblock title %} {% block body %}
+<div class="container mt-3">
+
+    <div class="row">
+
+
+        <div class="col-md-4">
+
+        </div>
+
+        <div class="col-md-4 jumbotron">
+            <h4 class="text-center bg-light text-dark">Bill Desk</h4>
+            <br> {% with messages=get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %}
+
+            <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                {{message}}
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+            </div>
+
+
+            {% endfor %} {% endif %} {% endwith %}
+
+
+            <form action="/discharge" method="POST">
+
+                <div class="form-group">
+                    <label for="username">Patient Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="Consultation">Consultation Fees</label>
+                    <input type="text" class="form-control" id="Consultation" name="confees" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="othchrg">Other charges</label>
+                    <input type="text" class="form-control" id="othchrg" name="othchrg" required>
+                </div>
+
+
+                <button type="submit" class="btn btn-dark btn-sm btn-block">Generate Bill</button>
+            </form>
+            <center>
+                {% if total %}
+                <h4>
+                    <font color="red">Total amount is {{total}} </font>
+                </h4>
+
+                {% endif %}
+            </center>
+        </div>
+
+        <div class="col-md-4">
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+{% endblock body %}

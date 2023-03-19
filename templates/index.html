@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% block title %}
+HOME
+{% endblock title %}
+
+{% block body %}
+
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+
+{% if current_user.usertype=="Doctor" %}
+ 
+<style>
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .container {
+    padding: 2px 16px;
+  }
+  </style>
+
+  <div class="card" style="width: 25%; float:left; margin-left: 30px; margin-right : 30px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+    <img src="static/doctor.png" alt="Avatar" style="width:100%">
+    <div class="container" style = "color: black">
+      <br>
+      <h4><b>My Details :- </b></h4><br>       
+        <p><b>Name : {{current_user.username}}</b></p>
+        <p><b>ID Number : {{current_user.id}}</b></p>
+        <p><b>Email : {{current_user.email}}</b></p>
+      </p> 
+      <br>
+      <br>
+    </div>
+  </div>
+
+  <div class="card" style="width: 25%; float:left; margin-left: 30px; margin-right : 40px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+    <a id="booking" href="/doctors" >
+      <img src="static/department.jpeg" alt="Avatar" style="width:100%">
+    </a>
+  </div>
+  <div class="card" style="width: 25%; float:left; margin-left: 30px; margin-right : 40px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+    <a id="booking" href="/bookings" >
+      <img src="static/details.jpeg" alt="Avatar" style="width:100%">
+    </a>
+  </div>
+  <div class="card" style="width: 25%; float:left; margin-left: 30px; margin-right : 40px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+    <a id="Prescription" href="/wpre" >
+      <img src="static/pres.jpeg" alt="Avatar" style="width:100%">
+    </a>
+  </div>
+  <div class="card" style="width: 25%; float:left; margin-left: 30px; margin-right : 40px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+    <a id="booking" href="/logout" >
+      <img src="static/logout.jpeg" alt="Avatar" style="width:100%">
+    </a>
+  </div>
+
+{% elif current_user.is_anonymous  %}
+<div>
+  <h2 style="text-align: center; margin-bottom: 0px; ">Blackfungus Treatment and Healthcare Services</h2>
+</div>        
+  
+
+  <style>
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      width: 40%;
+    }
+    
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.574);
+    }
+    
+    .container {
+      padding: 2px 16px;
+    }
+    </style>
+    <div>
+    
+    <div class="card" style="width: 30%; position: fixed; left: 35%; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+      <!--<img src="static/welcome.jpg" alt="Avatar" style="width:100%">-->
+      
+      <div class="container" style = "color: black">
+        <br>
+      <h5><b>Signup now to access our best in class heathcare services</b></h5>
+      <img src="static/icons.png" alt="Avatar" style="width:100%">
+        <button style="width:100%; border-radius: 10px;" onclick="location.href='/signup';">Signup</button>
+        <br>
+        <br>
+        <button style="width:100%; border-radius: 10px;" onclick="location.href='/login';">Login</button>
+        <br> 
+        <br>
+        <br>
+      </div>
+    </div>
+{% else %}
+
+    <div class="card" style="width: 25%; float:left; margin-left: 30px; margin-right : 40px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+      <img src="static/patient.png" alt="Avatar" style="width:100%">
+      <div class="container" style = "color: black">
+        <br>
+        <h4><b>Welcome Home {{current_user.username}} ! </b></h4><br>       
+          <p><b>User Name : {{current_user.username}}</b></p>
+          <p><b>Patient ID : {{current_user.id}}</b></p>
+          <p><b>Email : {{current_user.email}}</b></p>
+        </p> 
+        <br>
+      </div>
+    </div>
+
+    <div class="card" style="width: 30%; float:left; margin-left : 0px; margin-right : 40px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+      <br>
+      <!--<img src="static/patientimg.jpg" alt="Avatar" style="width:100%">-->
+      <div class="container" style = "color: black">
+        <h4><b>What Is Mucormycosis?</b></h4> 
+        <p>Mucormycosis, also known as black fungus, is a rare but dangerous infection. It's caused by a group of molds called mucormycetes and often affects the sinuses, lungs, skin, and brain.<br>
+          You can inhale the mold spores or come into contact with them in things like soil, rotting produce or bread, or compost piles.<br>
+        </p> 
+        <h4><b>Who Is at Risk?</b></h4> 
+        <p>People having following health conditions are more vulnerable to get affected: 
+          <ul>
+            <li>Cancer, HIV or AIDS</li>
+            <li>Neutropenia</li> 
+            <li>Hemochromatosis</li>
+            <li>Metabolic acidosis</li>
+            <li>Observed in people affected with COVID-19.</li>
+          </ul>
+        </p> 
+      </div>
+    </div>
+
+    <div class="card" style="width: 30%;  float:left; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+      <!--<img src="static/patientimg.jpg" alt="Avatar" style="width:100%">-->
+      <br>
+      <div class="container" style = "color: black">
+        <h4><b>Signs and Symptoms</b></h4> 
+        <p>Consult a doctor immediately when you encounter the following : 
+          <ul>
+            <li>Facial pain (eyes, nose, teeth, gums, mouth)</li>
+            <li>Paraesthesia / decreased sensation over half of the face</li> 
+            <li>Black discoloration over the bridge of nose/palate</li>
+            <li>Sinusitis – nasal pain / blockage / discharge</li>
+            <li>Periorbital swelling</li>
+            <li>Blurry vision</li>
+            <li>Respiratory problem or breathlessness</li>
+            <li>Chest pain, pleural effusion, hemoptysis</li>
+            <li>Discoloration of palate</li>
+            <li>Toothache, loosening of teeth, jaw involvement</li>
+          </ul>
+        </p> 
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endblock body %}

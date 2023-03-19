@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block title %} Doctor Precription{% endblock title %} {% block body %}
+
+
+     
+
+                <center>
+
+                    <h1>Doctor Precription</h1>
+                    <div class="container">
+                        <table class="table table-dark table-striped" border="4">
+                            <tr>
+                                <th>DOCTOR NAME</th>
+                                <!--<th>Email</th>-->
+                                <th>Date</th>
+                                <th>Precription</th>
+                               
+                              
+                               
+                                {% for d in data %}
+                            </tr>
+                            <td>{{d.name}} </td>
+                            <!--<td>{{d.email}} </td>-->
+                            <td>{{d.date}} </td>
+                            <td> {{d.prec}}</td>
+                          
+                          
+                            {% endfor %}
+                        </table>
+                   
+                </div>
+           
+         
+            </center>
+    
+        </div>
+
+        <div class="col-md-4">
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+{% endblock body %}
